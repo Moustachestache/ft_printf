@@ -19,6 +19,7 @@ under all conversions.
 //  %[flags][width][.precision][size]type
 
 //  https://learn.microsoft.com/fr-fr/cpp/c-runtime-library/format-specification-syntax-printf-and-wprintf-functions?view=msvc-170#size
+//	https://docs.oracle.com/cd/E19253-01/817-6223/chp-fmt-1.2/index.html
 /*
 
 
