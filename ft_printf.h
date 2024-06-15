@@ -36,29 +36,40 @@ workflow
 
 bear in mind to keep numbers of chars printed to output;
 */
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
+# include <stddef.h>
 
-# define    F_ZERO =    0x0;
-# define    F_MIN =     0x2;
-# define    F_DOT =     0x4;
-# define    F_POUND =   0x8;
-# define    F_SPACE =   0x10;
-# define    F_PLUS =    0x20;
-
-# define    C_CHAR =    0x0;
-# define    C_STR =     0x2;
-# define    C_PTR =     0x4;
-# define    C_DEC =     0x8;
-# define    C_UDEC =    0x10;
-# define    C_UNS =     0x20;
-# define    C_HEX =     0x40;
-# define    C_UHEX =    0x80;
+# define    F_ZERO  0x0;
+# define    F_MIN   0x2;
+# define    F_DOT   0x4;
+# define    F_POUND 0x8;
+# define    F_SPACE 0x10;
+# define    F_PLUS  0x20;
 
 typedef struct  s_flags {
     char        flagField;
-    char        convField;
+    char        conversion;
     size_t      width;
     size_t      precision;
-    size_t      size;       // not needed? // probably no, no
 }               t_flags;
 
 int     ft_printf(const char *, ...);
+
+//  ft_chars.c
+int     ft_isConversion(const char c);
+int     ft_isFlag(const char c);
+int     ft_isDigit(const char c);
+
+//  ft_utils.c
+void    *ft_calloc(size_t nmemb, int size);
+int     ft_atoi(const char *str);
+
+//  ft_initFlags.c
+t_flags   ft_initFLag(const char *str);
+
+
+#endif
