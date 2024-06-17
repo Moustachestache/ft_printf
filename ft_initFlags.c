@@ -1,15 +1,18 @@
 #include "ft_printf.h"
 
-static size_t  ft_initFlagWidth(const char *str)
+static int  ft_initFlagWidth(va_list args, const char *str, char _flagField)
 {
-    size_t  retVal;
+    int  retVal;
     int i;
 
     i = 0;
     retVal = 0;
-    while (str[i] && ft_isConversion(str[i]))
+    while (str[i] && ft_isFlag(str[i]) == 1)
         i++;
-    retVal = ft_atoi(str + i);
+    if (_flagField & F_FIELDMIN)
+        retVal = va_arg(args, int);
+    else if (str[i])
+        retVal = ft_atoi(str + i);
     return (retVal);
 }
 
@@ -20,48 +23,73 @@ static char    ft_initFlagField(const char *str)
 
     retVal = 0;
     i = 0;
-    while (str[i] && !ft_isConversion(str[i]))
+    while (str[i] && (!ft_isDigit(str[i]) || str[i] == '0') && !ft_isConversion(str[i]))
     {
         if (str[i] == '-')
-            retval |= F_MIN;
+            retVal |= F_MIN;
         else if (str[i] == '0')
-           retval |= F_ZERO;
-        else if (str[i] == '.')
-            retval |= F_DOT;
+           retVal |= F_ZERO;
         else if (str[i] == '#')
-            retval |= F_POUND;
+            retVal |= F_POUND;
         else if (str[i] == ' ')
-            retval |= F_SPACE;
+            retVal |= F_SPACE;
         else if (str[i] == '+')
-            retval |= F_PLUS;
+            retVal |= F_PLUS;
+        else if (str[i] == '*')
+            retVal |= F_FIELDMIN;
+        i++;
+    }
+    while (str[i] && !ft_isConversion(str[i]))
+    {
+        if (str[i] == '.')
+            retVal |= F_DOT;
         i++;
     }
     return (retVal);
 }
 
-static size_t  ft_initFlagPrec(const char *str)
+static int  ft_initFlagPrec(va_list args, const char *str)
 {
     int i;
-    size_t retVal;
+    int retVal;
 
     i = 0;
     retVal = 0;
     while (str[i] && str[i] != '.')
         i++;
     if (str[i] && str[i] == '.' && str[i] + 1)
-        retval = ft_atoi(str + i + 1);
+    {
+        if (str[i + 2] && str[i + 2] == '*')
+            retVal = va_arg(args, int);
+        else
+            retVal = ft_atoi(str + i + 1);
+    }
     return (retVal);
 }
 
-t_flags   ft_initFLag(const char *str)
+static char ft_initConversion(const char *str)
+{
+    int i;
+
+    i = 0;
+    while(str[i] && !ft_isConversion(str[i]))
+        i++;
+    if (str[i])
+        return (str[i]);
+    return (0);
+}
+
+t_flags   ft_initFlags(va_list args, const char *str)
 {
     t_flags returnFlags;
     int i;
 
     i = 0;
-    returnFlags = {0, 0, 0, 0, 0};
+    returnFlags = (t_flags){0, 0, 0, 0};
     returnFlags.flagField = ft_initFlagField(str);
-    returnFlags.width = ft_initFlagWidth(str);
-    returnFlags.precision = ft_initFlagPrec(str);
-    return (returnFlags)
+    returnFlags.width = ft_initFlagWidth(args, str, returnFlags.flagField);
+    returnFlags.conversion = ft_initConversion(str);
+    returnFlags.precision = ft_initFlagPrec(args, str);
+//    printf("flag debug: [flag field: %i] [width: %i] [conv: %i] [prec: %i]\n", returnFlags.flagField, returnFlags.width, returnFlags.conversion, returnFlags.precision);
+    return (returnFlags);
 }
