@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int  ft_itoaLen(long int n)
+static int  ft_itoaLen(long long int n)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ static int  ft_itoaLen(long int n)
 	return (i);
 }
 
-static char *ft_itoa(long int n)
+static char *ft_itoa(long long int n)
 {
 	int				i;
 	long int		j;
@@ -44,7 +44,7 @@ static char *ft_itoa(long int n)
 	return (itoa);
 }
 
-int     ft_printNum(long int n, t_flags flags)
+int     ft_printNum(long long int n, t_flags flags)
 {
     int     returnValue;
     char    *itoa;

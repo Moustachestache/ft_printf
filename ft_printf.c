@@ -10,13 +10,13 @@ static int  ft_selectConversion(va_list args, const char *str)
     else if (flags.conversion == 's')
         return (ft_printStr(va_arg(args, char *), flags));
     else if (flags.conversion == 'd' || flags.conversion == 'i')
-        return (ft_printNum((long int)va_arg(args, int), flags));
+        return (ft_printNum((long long int)va_arg(args, int), flags));
     else if (flags.conversion == 'u')
-        return (ft_printNum((long int)va_arg(args, unsigned int), flags));
-/*    else if (flags.conversion == 'x' || flags.conversion == 'X')
-        return (ft_printHex(va_arg(args, unsigned int), flags));
+        return (ft_printNum((long long int)va_arg(args, unsigned int), flags));
+    else if (flags.conversion == 'x' || flags.conversion == 'X')
+        return (ft_printHex((unsigned long)va_arg(args, unsigned int), flags));
     else if (flags.conversion == 'p')
-        return (ft_printPtr(va_arg(args, unsigned long), flags)); */
+        return (ft_printHex(va_arg(args, unsigned long), flags));
     else
         return (0);
 }

@@ -90,6 +90,5 @@ t_flags   ft_initFlags(va_list args, const char *str)
     returnFlags.width = ft_initFlagWidth(args, str, returnFlags.flagField);
     returnFlags.conversion = ft_initConversion(str);
     returnFlags.precision = ft_initFlagPrec(args, str);
-//    printf("flag debug: [flag field: %i] [width: %i] [conv: %i] [prec: %i]\n", returnFlags.flagField, returnFlags.width, returnFlags.conversion, returnFlags.precision);
     return (returnFlags);
 }

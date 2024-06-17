@@ -81,9 +81,9 @@ t_flags   ft_initFlags(va_list args, const char *str);
 //  ft_printX.c
 int     ft_printStr(const char *str, t_flags flags);
 int     ft_printChar(const char c, t_flags flags);
-int     ft_printNum(long int n, t_flags flags);
+int     ft_printNum(long long int n, t_flags flags);
 int     ft_printUnsigned(unsigned int n, t_flags flags);
-int     ft_printHex(unsigned int n, t_flags flags);
+int     ft_printHex(unsigned long n, t_flags flags);
 int     ft_printPtr(unsigned long n, t_flags flags);
 
 #endif
