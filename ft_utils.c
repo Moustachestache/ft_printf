@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/18 14:35:05 by mjochum           #+#    #+#             */
+/*   Updated: 2024/06/18 17:28:16 by mjochum          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_atoi(const char *nptr)
@@ -48,14 +60,14 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return ((void *)r);
 }
 
-int  ft_strLen(const char *str)
+int	ft_strlen(const char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str && str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str && str[i])
+		i++;
+	return (i);
 }
 
 void	*ft_memset(void *s, int c, size_t n)
@@ -73,13 +85,15 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-int    ft_staticPutstr(const char *str, size_t limit)
+int	ft_staticputstr(const char *str, int limit)
 {
-    int i = 0;
-    while (str[i] && i < limit)
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-    return (i);
+	int	i;
+
+	i = 0;
+	while (str[i] && i < limit)
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }

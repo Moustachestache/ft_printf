@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printNums.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/18 14:35:03 by mjochum           #+#    #+#             */
+/*   Updated: 2024/06/18 17:12:24 by mjochum          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static int  ft_itoaLen(long long int n)
+static int	ft_itoalen(long long int n)
 {
 	int	i;
 
@@ -20,14 +32,14 @@ static int  ft_itoaLen(long long int n)
 	return (i);
 }
 
-static char *ft_itoa(long long int n)
+static char	*ft_itoa(long long int n)
 {
 	int				i;
 	long int		j;
 	char			*itoa;
 
 	j = n;
-	i = ft_itoaLen(j);
+	i = ft_itoalen(j);
 	itoa = ft_calloc(i-- + 1, sizeof(char));
 	if (j < 0)
 	{
@@ -44,46 +56,42 @@ static char *ft_itoa(long long int n)
 	return (itoa);
 }
 
-int     ft_printNum(long long int n, t_flags flags)
+int	ft_nummin(long long int *n, int *len)
 {
-    int     returnValue;
-    char    *itoa;
-    int     len;
-    char    spacer;
+	int	retval;
 
-    returnValue = 0;
-    spacer = ' ';
-    len = 0;
-    if (flags.flagField & F_ZERO && (flags.flagField & F_DOT) == 0)
-        spacer = '0';
-    if (n < 0)
-    {
-        n = n / -(write(1, "-", 1));
-        len += 1;
-        returnValue++;
-    }
-    itoa = ft_itoa(n);
-    len += ft_strLen(itoa);
-    if (flags.flagField & F_DOT)
-        len = flags.precision;
-    flags.width -= len;
-    while ((flags.flagField & F_MIN) == 0 && flags.width > 0)
-    {
-        returnValue += write(1, &spacer, 1);
-        flags.width--;
-    }
-    if (flags.flagField & F_SPACE && n > 0)
-        returnValue += write(1, " ", 1);
-    returnValue += ft_staticPutstr(itoa, len);
-    while (flags.width > 0)
-    {
-        returnValue += write(1, " ", 1);
-        flags.width--;
-    }
-    return (returnValue);
+	retval = 0;
+	if (*n < 0)
+	{
+		*n /= -(write(1, "-", 1));
+		len += 1;
+		retval++;
+	}
+	return (retval);
 }
 
-/* int     ft_printUnsigned(unsigned int n, t_flags flags)
+int	ft_printnum(long long int n, t_flags flags)
 {
-    return 0;
-} */
+	int		retval;
+	char	*itoa;
+	int		len;
+	char	spacer;
+
+	retval = 0;
+	spacer = ' ';
+	len = 0;
+	if (flags.flagfield & F_ZERO && (flags.flagfield & F_DOT) == 0)
+		spacer = '0';
+	retval += ft_nummin(&n, &len);
+	itoa = ft_itoa(n);
+	len += ft_strlen(itoa);
+	if (flags.flagfield & F_DOT)
+		len = flags.precision;
+	flags.width -= len;
+	retval += ft_rightalign(&flags, spacer);
+	if (flags.flagfield & F_SPACE && n > 0)
+		retval += write(1, " ", 1);
+	retval += ft_staticputstr(itoa, len);
+	retval += ft_leftalign(&flags, spacer);
+	return (retval);
+}
