@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:34:56 by mjochum           #+#    #+#             */
-/*   Updated: 2024/06/18 17:28:29 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:47:34 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_staticputstr(const char *str, int limit);
 //  ft_align.c
 int		ft_rightalign(t_flags *flags, char spacer);
 int		ft_leftalign(t_flags *flags, char spacer);
+int		ft_numrightalign(t_flags *flags, char sign);
 
 //  ft_initflags.c
 t_flags	ft_initflags(va_list args, const char *str);

@@ -1,23 +1,52 @@
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
+#include <limits.h>
+#include <stdlib.h>
+#include <time.h>
 #include "ft_printf.h"
-int main(void)
+
+#define RED "\033[0;31m"
+#define GRN "\033[0;32m"
+#define WHT "\033[0;37m"
+
+int	main(int ac, char **av)
 {
-	int a = F_ZERO;
-	int b = F_MIN;
-	int c = a | b;
-	int d = a & b;
-	int e = F_FIELDMIN;
+time_t	vartime = time(&vartime);
+unsigned int timeint = (unsigned int)vartime;
+int	rand = rand_r(&timeint);
 
-	int normval;
-	int myval;
+int	min = INT_MIN;
+int	max = INT_MAX;
+int	zero = 0;
 
-	char *str = ft_calloc(4,4);
-	printf("flag values: \nF_ZERO[%i] F_MIN[%i] F_DOT[%i] \nF_POUND[%i] F_SPACE[%i] F_PLUS[%i] F_FIELDMIN[%i]\n\n", F_ZERO, F_MIN, F_DOT, F_POUND, F_SPACE, F_PLUS, F_FIELDMIN);
+void *vptr = NULL;
+void *vptr2 = malloc(69);
 
-/*	 normval =	  printf("[%030x][%-30x][%-30p][%u]\n", -123456789, -123456789, &str, str);
-	myval =	 ft_printf("[%030x][%-30x][%-30p][%u]\n", -123456789, -123456789, &str, str); */
+unsigned int umax = UINT_MAX;
 
-	normval =	  printf("[%#-30.3x][%#030.3x][%-30p][%30p]\n", -123456789, 123456789, &str, str);
-	myval =	 ft_printf("[%#-30.3x][%#030.3x][%-30p][%30p]\n", -123456789, 123456789, &str, str);
+long int	lint = LONG_MAX;
+long int	mint = LONG_MIN;
 
-	printf("printf n: %i myval: %i\n", normval, myval);
+char	*str1 = "hello world str1";
+char	*str2 = "un deux trois";
+char	*str3 = "";
+char	*str4 = NULL;
+
+printf("test1 : str\n");
+int		pstr = ft_printf("[%s][%s][%s][%s]\n", str1, str2, str3, str4);
+int		pstr_bis = printf("[%10.5s][%.5s][%5.5s][%50.2s]\n", str1, str2, str3, str4);
+int		rpstr = ft_printf("[%s][%s][%s][%s]\n", str1, str2, str3, str4);
+int		rpstr_bis = printf("[%10.5s][%.5s][%5.5s][%50.2s]\n", str1, str2, str3, str4);
+printf("result:[%i:%i][%i:%i]\n", pstr, pstr_bis, rpstr, rpstr_bis);
+
+printf("test 2: %%i and %%d\n");
+int		pid = ft_printf("[%i][%i][%i] [%d][%d][%d]\n", rand, min, max, rand, min, max);
+int		pid_bis = printf("[%i][%i][%i] [%d][%d][%d]\n", rand, min, max, rand, min, max);
+int		rpid = ft_printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% 0d]\n", rand, min, max, rand, min, max);
+int		rpid_bis = printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% 0d]\n", rand, min, max, rand, min, max);
+
+printf("result:[%i:%i][%i:%i]\n", pid, pid_bis, rpid, rpid_bis);
 }
