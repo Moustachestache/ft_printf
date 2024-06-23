@@ -19,10 +19,9 @@ int	ft_printstr(const char *str, t_flags flags)
 
 	retval = 0;
 	strlen = ft_strlen(str);
-	printf("[precision: %i][flags: %i]", flags.precision, flags.flagfield & F_DOT);
 	if (str == NULL)
 		strlen = 6;
-	else if (flags.flagfield & F_DOT)
+	else if (strlen && flags.flagfield & F_DOT)
 		strlen = flags.precision;
 	flags.width -= strlen;
 	retval += ft_rightalign(&flags, ' ');

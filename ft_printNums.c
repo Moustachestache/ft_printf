@@ -73,6 +73,6 @@ int	ft_printnum(long long int n, t_flags flags)
 	flags.width -= len;
 	retval += ft_numrightalign(&flags, sign);
 	retval += ft_putnbr(n);
-	retval += ft_leftalign(&flags, sign);
+	retval += ft_numleftalign(&flags, sign);
 	return (retval);
 }

@@ -55,6 +55,7 @@ int		ft_staticputstr(const char *str, int limit);
 int		ft_rightalign(t_flags *flags, char spacer);
 int		ft_leftalign(t_flags *flags, char spacer);
 int		ft_numrightalign(t_flags *flags, char sign);
+int		ft_numleftalign(t_flags *flags, char sign);
 
 //  ft_initflags.c
 t_flags	ft_initflags(va_list args, const char *str);
