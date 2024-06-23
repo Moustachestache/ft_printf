@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:34:09 by mjochum           #+#    #+#             */
-/*   Updated: 2024/06/18 17:18:30 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:37:18 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_getflagval(char c)
 		return (F_PLUS);
 	else if (c == '*')
 		return (F_FIELDMIN);
+	else if (c == '.')
+		return (F_DOT);
 	else
 		return (0);
 }

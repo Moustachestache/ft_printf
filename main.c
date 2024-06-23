@@ -36,17 +36,27 @@ char	*str3 = "";
 char	*str4 = NULL;
 
 printf("test1 : str\n");
-int		pstr = ft_printf("[%s][%s][%s][%s]\n", str1, str2, str3, str4);
-int		pstr_bis = printf("[%10.5s][%.5s][%5.5s][%50.2s]\n", str1, str2, str3, str4);
-int		rpstr = ft_printf("[%s][%s][%s][%s]\n", str1, str2, str3, str4);
-int		rpstr_bis = printf("[%10.5s][%.5s][%5.5s][%50.2s]\n", str1, str2, str3, str4);
-printf("result:[%i:%i][%i:%i]\n", pstr, pstr_bis, rpstr, rpstr_bis);
+printf("%s", "ft_printf\n");
+//int		pstr = ft_printf("[%s][%s][%s][%s]\n", str1, str2, str3, str4);
+printf("%s", "printf\n");
+//int		rpstr = printf("[%s][%s][%s][%s]\n", str1, str2, str3, str4);
+printf("%s", "ft_printf\n");
+int		pstr_bis = ft_printf("[%10.s][%.5s][%5.5s][%50.2s]\n", str1, str2, str3, str4);
+printf("%s", "printf\n");
+int		rpstr_bis = printf("[%10.s][%.5s][%5.5s][%50.2s]\n", str1, str2, str3, str4);
+
+//printf("result:[%i:%i][%i:%i]\n", pstr, rpstr, pstr_bis, rpstr_bis);
 
 printf("test 2: %%i and %%d\n");
-int		pid = ft_printf("[%i][%i][%i] [%d][%d][%d]\n", rand, min, max, rand, min, max);
-int		pid_bis = printf("[%i][%i][%i] [%d][%d][%d]\n", rand, min, max, rand, min, max);
-int		rpid = ft_printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% 0d]\n", rand, min, max, rand, min, max);
-int		rpid_bis = printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% 0d]\n", rand, min, max, rand, min, max);
+printf("%s", "ft_printf\n");
+int		pid = ft_printf("[%-15i][%i][%i] [%d][%d][%d]\n", rand, min, max, rand, min, max);
+printf("%s", "printf\n");
+int		rpid = printf("[%-15i][%i][%i] [%d][%d][%d]\n", rand, min, max, rand, min, max);
+
+printf("%s", "ft_printf\n");
+int		pid_bis = ft_printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% -30d]\n", rand, min, max, rand, min, max);
+printf("%s", "printf\n");
+int		rpid_bis = printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% -30d]\n", rand, min, max, rand, min, max);
 
 printf("result:[%i:%i][%i:%i]\n", pid, pid_bis, rpid, rpid_bis);
 }

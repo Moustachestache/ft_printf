@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:34:51 by mjochum           #+#    #+#             */
-/*   Updated: 2024/06/18 17:23:53 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:24:26 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ int	ft_printstr(const char *str, t_flags flags)
 
 	retval = 0;
 	strlen = ft_strlen(str);
+	printf("[precision: %i][flags: %i]", flags.precision, flags.flagfield & F_DOT);
 	if (str == NULL)
 		strlen = 6;
-	else if (strlen > flags.precision)
+	else if (flags.flagfield & F_DOT)
 		strlen = flags.precision;
 	flags.width -= strlen;
 	retval += ft_rightalign(&flags, ' ');
 	if (str == NULL)
 	{
-		if (strlen >= 6)
+		if (strlen >= 6 && (flags.precision >= 6 || flags.precision == 0))
 			retval += ft_staticputstr("(null)", strlen);
 		else
-			retval += ft_staticputstr("	  ", strlen);
+			retval += ft_staticputstr("      ", strlen);
 	}
 	else
 		retval += ft_staticputstr(str, strlen);

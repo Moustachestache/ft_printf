@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:35:03 by mjochum           #+#    #+#             */
-/*   Updated: 2024/06/19 17:24:20 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/06/19 18:40:41 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ static int	ft_itoalen(long long int n)
 	i = 0;
 	if (n == 0)
 		return (1);
-	if (n < 0)
-	{
-		i++;
-		n *= -1;
-	}
 	while (n > 0)
 	{
 		n /= 10;

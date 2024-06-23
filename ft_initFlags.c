@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:34:48 by mjochum           #+#    #+#             */
-/*   Updated: 2024/06/18 17:23:24 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:33:45 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	ft_initflagprec(va_list args, const char *str)
 	retval = 0;
 	while (str[i] && str[i] != '.')
 		i++;
-	if (str[i] && str[i] == '.' && str[i] + 1)
+	if (str[i] && str[i] == '.' && str[i + 1])
 	{
 		if (str[i + 2] && str[i + 2] == '*')
 			retval = va_arg(args, int);
