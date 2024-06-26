@@ -62,7 +62,7 @@ int	ft_numrightalign(t_flags *flags, char sign)
 	else if (!(flags->flagfield & F_MIN) && flags->flagfield & F_ZERO)
 	{
 		retval += write(1, &sign, 1);
-		while (--flags->width > 0)
+		while (--flags->width >= 0)
 			retval += write(1, "0", 1);
 		return (retval);
 	}
@@ -70,12 +70,13 @@ int	ft_numrightalign(t_flags *flags, char sign)
 	{
 		if (sign != 0)
 			flags->width--;
-		while (flags->width > 0)
+		while (flags->width >= 0)
 		{
 			retval += write(1, " ", 1);
 			flags->width--;
 		}
-		retval += write(1, &sign, 1);
+		if (sign != 0)
+			retval += write(1, &sign, 1);
 	}
 	return (retval);
 }

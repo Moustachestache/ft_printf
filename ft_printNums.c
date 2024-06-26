@@ -43,18 +43,18 @@ char	ft_setsign(long long int *n, int *retval, int *len, t_flags flags)
 	(void) retval;
 	if (*n < 0)
 	{
-		len++;
+		(*len)++;
 		*n *= -1;
 		return ('-');
 	}
 	else if (*n > 0 && flags.flagfield & F_PLUS)
 	{
-		len++;
+		(*len)++;
 		return ('+');
 	}
 	else if (*n > 0 && flags.flagfield & F_SPACE)
 	{
-		len++;
+		(*len)++;
 		return (' ');
 	}
 	return (0);
@@ -72,6 +72,8 @@ int	ft_printnum(long long int n, t_flags flags)
 	len += ft_itoalen(n);
 	flags.width -= len;
 	retval += ft_numrightalign(&flags, sign);
+	if (flags.flagfield & F_MIN && sign !=0)
+		retval = write(1, &sign, 1);
 	retval += ft_putnbr(n);
 	retval += ft_numleftalign(&flags, sign);
 	return (retval);
