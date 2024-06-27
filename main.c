@@ -61,17 +61,33 @@ int		rpid_bis =   printf("[%5.2i][%020i][%+12i] [%5.2d][% 0d][% -30d]\n", rand, 
 printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis); */
 
 
-printf("test 2: %%i and %%d\n");
+/* printf("test 3: %%x and %%X\n");
 printf("%s", "ft_printf\n");
-int		pid = ft_printf("[%-15x][%x][%x] [%X][%X][%X]\n", rand, min, max, rand, min, max);
+int		pid = ft_printf("[%-15x][%-20x][%010x] [%.4X][%#10X][%#X]\n", rand, min, max, rand, min, max);
 printf("%s", "printf\n");
-int		rpid =   printf("[%-15x][%x][%x] [%X][%X][%X]\n", rand, min, max, rand, min, max);
+int		rpid =   printf("[%-15x][%-20x][%010x] [%.4X][%#10X][%#X]\n", rand, min, max, rand, min, max);
 
 printf("%s", "ft_printf\n");
-int		pid_bis = ft_printf("[%5.2x][%020x][%+12x] [%5.2x][% 0x][% -30x]\n", rand, min, max, rand, min, max);
+int		pid_bis = ft_printf("[%5.2x][%020x][%12x] [%5.2x][%0x][%30x]\n", rand, min, max, rand, min, max);
 printf("%s", "printf\n");
-int		rpid_bis =   printf("[%5.2x][%020x][%+12x] [%5.2x][% 0x][% -30x]\n", rand, min, max, rand, min, max);
+int		rpid_bis =   printf("[%5.2x][%020x][%12x] [%5.2x][%0x][%30x]\n", rand, min, max, rand, min, max);
 
 printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis);
+ */
+
+printf("test 4: %%u");
+printf("%s", "ft_printf\n");
+int		pid = ft_printf("[%-15u][%-20u][%010u] [%.4u][%10u][%u]\n", rand, min, max, rand, min, max);
+printf("%s", "printf\n");
+int		rpid =   printf("[%-15u][%-20u][%010u] [%.4u][%10u][%u]\n", rand, min, max, rand, min, max);
+
+printf("%s", "ft_printf\n");
+int		pid_bis = ft_printf("[%5.2u][%020u][%12u] [%5.2u][%0u][%30u]\n", rand, min, max, rand, min, max);
+printf("%s", "printf\n");
+int		rpid_bis =   printf("[%5.2u][%020u][%12u] [%5.2u][%0u][%30u]\n", rand, min, max, rand, min, max);
+
+printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis);
+
+
 
 }
