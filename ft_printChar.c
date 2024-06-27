@@ -40,19 +40,16 @@ int	ft_printstr(const char *str, t_flags flags)
 
 int	ft_printchar(const char c, t_flags flags)
 {
-	char	*buffer;
+	static char	buffer[2] = {0, 0};
 	int		i;
 
 	i = 0;
-	if (flags.width <= 1)
-		return (write(1, &c, 1));
-	buffer = ft_calloc(flags.width + 1, sizeof(char));
-	buffer = ft_memset(buffer, ' ', flags.width);
-	if (flags.flagfield & F_MIN)
-		buffer[0] = c;
-	else
-		buffer[flags.width - 1] = c;
-	i = ft_staticputstr(buffer, -1);
-	free(buffer);
+	if (c == 0)
+	{
+		flags.width--;
+		i++;
+	}
+	buffer[0] = c;
+	i += ft_printstr(buffer, flags);
 	return (i);
 }

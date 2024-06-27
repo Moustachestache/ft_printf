@@ -17,6 +17,12 @@ int	ft_rightalign(t_flags *flags, char spacer)
 	int		retval;
 
 	retval = 0;
+	if (flags->conversion == 'u')
+	{
+		spacer = ' ';
+		if (flags->flagfield & F_ZERO)
+			spacer = '0';
+	}
 	while ((flags->flagfield & F_MIN) == 0 && flags->width > 0)
 	{
 		retval += write(1, &spacer, 1);
@@ -59,7 +65,7 @@ int	ft_numrightalign(t_flags *flags, char sign)
 	retval = 0;
 	if (flags->flagfield == 0 && sign == '-')
 		retval += write(1, &sign, 1);
-	else if (!(flags->flagfield & F_MIN) && flags->flagfield & F_ZERO)
+	if (!(flags->flagfield & F_MIN) && flags->flagfield & F_ZERO)
 	{
 		retval += write(1, &sign, 1);
 		while (--flags->width >= 0)
@@ -78,5 +84,6 @@ int	ft_numrightalign(t_flags *flags, char sign)
 		if (sign != 0)
 			retval += write(1, &sign, 1);
 	}
+	printf("[retval: %i]", retval);
 	return (retval);
 }

@@ -75,19 +75,38 @@ int		rpid_bis =   printf("[%5.2x][%020x][%12x] [%5.2x][%0x][%30x]\n", rand, min,
 printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis);
  */
 
-printf("test 4: %%u");
+/* printf("test 4: %%u");
 printf("%s", "ft_printf\n");
 int		pid = ft_printf("[%-15u][%-20u][%010u] [%.4u][%10u][%u]\n", rand, min, max, rand, min, max);
 printf("%s", "printf\n");
 int		rpid =   printf("[%-15u][%-20u][%010u] [%.4u][%10u][%u]\n", rand, min, max, rand, min, max);
-
 printf("%s", "ft_printf\n");
 int		pid_bis = ft_printf("[%5.2u][%020u][%12u] [%5.2u][%0u][%30u]\n", rand, min, max, rand, min, max);
 printf("%s", "printf\n");
 int		rpid_bis =   printf("[%5.2u][%020u][%12u] [%5.2u][%0u][%30u]\n", rand, min, max, rand, min, max);
+printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis); */
 
-printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis);
+/* printf("text 5: %%p");
+printf("%s", "ft_printf\n");
+int		pid = ft_printf("[%-15p][%-20p][%10p] [%4p][%10p][%p]\n", (void *)rand, (void*)min, (void*)max, (void*)rand, (void*)min, (void*)max);
+printf("%s", "printf\n");
+int		rpid =   printf("[%-15p][%-20p][%10p] [%4p][%10p][%p]\n", (void *)rand, (void*)min, (void*)max, (void*)rand, (void*)min, (void*)max);
+printf("%s", "ft_printf\n");
+int		pid_bis = ft_printf("[%5.2p][%20p][%12p] [%52p][%0p][%30p]\n", (void *)rand, (void*)min, (void*)max, (void*)rand, (void*)min, (void*)max);
+printf("%s", "printf\n");
+int		rpid_bis =   printf("[%5.2p][%20p][%12p] [%52p][%0p][%30p]\n", (void *)rand, (void*)min, (void*)max, (void*)rand, (void*)min, (void*)max);
 
+printf("result:[ft_printf:%i::printf:%i][ft_printf:%i::printf:%i]\n", pid, rpid, pid_bis, rpid_bis); */
 
+printf("test 6: %%c\n");
+int		pid_bis = ft_printf("[%10c][%-5c][%4c][%3c][%2c][%2c][%20c]\n", 0, -'b', 'c', 'd', 'e', 'f', 'g');
+printf("%s", "printf\n");
+int		rpid_bis = printf("[%10c][%-5c][%4c][%3c][%2c][%2c][%20c]\n", 0, -'b', 'c', 'd', 'e', 'f', 'g');
+printf("[%i][%i]\n", pid_bis, rpid_bis);
 
+/* printf("test 69: %%%%\n");
+int		pid_bis = ft_printf("I'm a little teapot short and stout, heres my %% here's my %%%%\n");
+printf("%s", "printf\n");
+int		rpid_bis = printf("I'm a little teapot short and stout, heres my %% here's my %%%%\n");
+printf("[%i][%i]\n", pid_bis, rpid_bis); */
 }

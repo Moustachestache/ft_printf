@@ -60,6 +60,23 @@ char	ft_setsign(long long int *n, int *retval, int *len, t_flags flags)
 	return (0);
 }
 
+int	ft_printunum(long long int n, t_flags flags)
+{
+	int		retval;
+	int		len;
+	char	sign;
+	
+	retval = 0;
+	len = 0;
+	sign = ft_setsign(&n, &retval, &len, flags);
+	len += ft_itoalen(n);
+	flags.width -= len;
+	retval += ft_rightalign(&flags, sign);
+	retval += ft_putnbr(n);
+	retval += ft_leftalign(&flags, sign);
+	return (retval);
+}
+
 int	ft_printnum(long long int n, t_flags flags)
 {
 	int		retval;

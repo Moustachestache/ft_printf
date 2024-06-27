@@ -67,5 +67,6 @@ int		ft_printnum(long long int n, t_flags flags);
 int		ft_printunsigned(unsigned int n, t_flags flags);
 int		ft_printhex(unsigned long n, t_flags flags);
 int		ft_printptr(unsigned long n, t_flags flags);
+int		ft_printunum(long long int n, t_flags flags);
 
 #endif
