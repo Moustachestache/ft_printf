@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:35:44 by mjochum           #+#    #+#             */
-/*   Updated: 2024/06/21 11:52:15 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:32:09 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_numrightalign(t_flags *flags, char sign)
 			retval += write(1, "0", 1);
 		return (retval);
 	}
-	else if (!(flags->flagfield & F_MIN))
+	else if (!(flags->flagfield & F_MIN) && flags->flagfield)
 	{
 		if (sign != 0)
 			flags->width--;
